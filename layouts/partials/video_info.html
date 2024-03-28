@@ -1,0 +1,270 @@
+<div id="info" class="info">
+    <div class="inner">
+        {{ if .Params.videoinfo_block.poster }}
+        <div class="poster">
+            {{ $poster := resources.Get .Params.videoinfo_block.poster }}
+            {{ if $poster }}
+            <picture>
+                {{ $resized400 := $poster.Resize "400x webp" }}
+                <source data-srcset="{{ $resized400.RelPermalink }}" type="image/webp">
+                {{ $resized := $poster.Resize "400x" }}
+                <img src="/image/img-placeholder-land.svg" {{ if .Params.videoinfo_block.poster }} data-src="{{ $resized.RelPermalink }}"
+                  {{ end }} alt="《{{ .Params.videoinfo_block.video_title_chs }}》海報" class="lazy" title="《{{ .Params.videoinfo_block.video_title_chs }}》海報"
+                  width="540" height="810">
+              </picture>
+              {{ end }}
+        </div>
+        {{ end }}
+        <div class="infos">
+            <h3 class="video-title-cht">{{ .Params.videoinfo_block.video_title_chs }}</h3>
+            <h4 class="video-title-org">{{ .Params.videoinfo_block.video_title_org }}</h4>
+            {{ if .Params.videoinfo_block.video_director }}
+            <div class="staffs">
+                <h5 class="staffs-title">導演</h5>
+                <p>{{ .Params.videoinfo_block.video_director }}</p>
+            </div>
+            {{ end }}
+            {{ if .Params.videoinfo_block.video_screenwriter }}
+            <div class="staffs">
+                <h5 class="staffs-title">編劇</h5>
+                <p>{{ .Params.videoinfo_block.video_screenwriter }}</p>
+            </div>
+            {{ end }}
+            {{ if .Params.videoinfo_block.actors }}
+            <div class="staffs">
+                <h5 class="staffs-title">主演</h5>
+                <p>
+                    <!-- {{ range $i, $e := .Params.videoinfo_block.actors }}{{ if $i }}、{{ end }}<a href="{{ "actors/" | absURL }}{{ $e | urlize | htmlEscape }}/" rel="tag">{{ $e }}</a>{{ end }} -->
+                    {{ range $i, $e := .Params.videoinfo_block.actors }}{{ if $i }}、{{ end }}<span>{{ $e }}</span>{{ end }}
+                </p>
+            </div>
+            {{ end }}
+            {{ if .Params.videoinfo_block.video_year }}
+            <div class="staffs">
+                <h5 class="staffs-title">年份</h5>
+                <p>{{ .Params.videoinfo_block.video_year }}</p>
+            </div>
+            {{ end }}
+            {{ if or (.Params.videoinfo_block.imdb) (.Params.videoinfo_block.tomato) (.Params.videoinfo_block.bin) }}
+            <div class="staffs">
+                <h5 class="staffs-title">評分</h5>
+                <div class="score">
+                    {{ if .Params.videoinfo_block.imdb }}
+                    <div class="score-imdb">
+                        <img data-src="https://yuslife.cc/src/images/ott/imdb.svg" alt="IMDb Logo"
+                            class="lazy score-imdb-logo entered loaded" width="32" height="16"
+                            data-ll-status="loaded" src="https://yuslife.cc/src/images/ott/imdb.svg">
+                        <p>{{ .Params.videoinfo_block.imdb }}</p>
+                    </div>
+                    {{ end }}
+                    {{ if .Params.videoinfo_block.tomato }}
+                    <div class="score-imdb">
+                        <img data-src="https://yuslife.cc/src/images/ott/rotten-tomatoes.svg"
+                            alt="Rotten Tomatoes Logo" class="lazy score-imdb-logo entered loaded"
+                            width="16" height="16" data-ll-status="loaded"
+                            src="https://yuslife.cc/src/images/ott/rotten-tomatoes.svg">
+                        <p>{{ .Params.videoinfo_block.tomato }}</p>
+                    </div>
+                    {{ end }}
+                    {{ if .Params.videoinfo_block.bin }}
+                    <div class="score-imdb">
+                        <img data-src="https://yuslife.cc/src/images/ott/douban.png" alt="豆瓣 Logo"
+                            class="lazy score-imdb-logo entered loaded" width="16" height="16"
+                            data-ll-status="loaded" src="https://yuslife.cc/src/images/ott/douban.png">
+                        <p>{{ .Params.videoinfo_block.bin }}</p>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+            {{ end }}
+            {{ if or (.Params.videoinfo_block.preview) (.Params.videoinfo_block.online_view) }}
+            <div class="infos-btn">
+                {{ if .Params.videoinfo_block.preview }}
+                <button type="button" class="preview-video" id="preview-video" data-id="{{ .Params.videoinfo_block.preview }}">預告片</button>
+                {{ end }}
+                {{ if .Params.videoinfo_block.online_view_block.online_view }}
+                <button type="button" class="online-video" id="online-video">線上看</button>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+    </div>
+    <div class="how-to-watch hide">
+        <button class="close" id="htw-close"></button>
+        <div class="how-to-watch-link">
+            {{ if .Params.videoinfo_block.online_view_block.netflix }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.netflix }}" class="how-to-watch-link-item netflix" title="前往 Netflix 觀看" target="_blank">
+              <img data-src="/src/images/ott/netflix.svg" alt="Netflix Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.pts }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.pts }}" class="how-to-watch-link-item pts" title="前往公視+ 觀看" target="_blank">
+              <img data-src="/src/images/ott/pts-plus.svg" alt="公視+ Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.catchplay }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.catchplay }}" class="how-to-watch-link-item catchplay" title="前往 CATCHPLAY+ 觀看"
+              target="_blank">
+              <img data-src="/src/images/ott/catchplay-plus.svg" alt="CATCHPLAY+ Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.myvideo }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.myvideo }}" class="how-to-watch-link-item myvideo" title="前往 myVideo 觀看" target="_blank">
+              <img data-src="/src/images/ott/myvideo.svg" alt="myVideo Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.hamivideo }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.hamivideo }}" class="how-to-watch-link-item hami-video" title="前往 HamiVideo 觀看"
+              target="_blank">
+              <img data-src="/src/images/ott/hami-video.svg" alt="HamiVideo Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.friday }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.friday }}" class="how-to-watch-link-item friday" title="前往 friDay影音 觀看" target="_blank">
+              <img data-src="/src/images/ott/friday.svg" alt="friDay影音 Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.linetv }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.linetv }}" class="how-to-watch-link-item line-tv" title="前往 LINE TV 觀看" target="_blank">
+              <img data-src="/src/images/ott/line-tv.svg" alt="LINE TV Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.kktv }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.kktv }}" class="how-to-watch-link-item kktv" title="前往 KKTV 觀看" target="_blank">
+              <img data-src="/src/images/ott/kktv.svg" alt="KKTV Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.hbo }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.hbo }}" class="how-to-watch-link-item hbo" title="前往 HBO GO 觀看" target="_blank">
+              <img data-src="/src/images/ott/hbogo.svg" alt="HBO GO Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.disney }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.disney }}" class="how-to-watch-link-item disney" title="前往 Disney+ 觀看" target="_blank">
+              <img data-src="/src/images/ott/disney-plus.svg" alt="Disney+ Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.appletv }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.appletv }}" class="how-to-watch-link-item appletv" title="前往 Apple TV+ 觀看" target="_blank">
+              <img data-src="/src/images/ott/apple-tv-plus.svg" alt="Apple TV+ Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.mod }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.mod }}" class="how-to-watch-link-item mod" title="前往 中華電信 MOD 觀看" target="_blank">
+              <img data-src="/src/images/ott/mod.svg" alt="中華電信 MOD Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.youtube }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.youtube }}" class="how-to-watch-link-item youtube" title="前往 YouTube 觀看" target="_blank">
+              <img data-src="/src/images/ott/youtube.svg" alt="YouTube Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.anigamer }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.anigamer }}" class="how-to-watch-link-item anigamer" title="前往巴哈姆特動畫瘋觀看" target="_blank">
+              <img data-src="/src/images/ott/anigamer.svg" alt="巴哈姆特 動畫瘋 Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.litv }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.litv }}" class="how-to-watch-link-item litv" title="前往 LiTV 觀看" target="_blank">
+              <img data-src="/src/images/ott/litv.svg" alt="LiTV Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.eltaott }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.eltaott }}" class="how-to-watch-link-item elta" title="前往 ELTA OTT 觀看" target="_blank">
+              <img data-src="/src/images/ott/elta-ott.svg" alt="ELTA OTT Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.fourgtv }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.fourgtv }}" class="how-to-watch-link-item fourgtv" title="前往四季線上影視觀看" target="_blank">
+              <img data-src="/src/images/ott/fourgtv.svg" alt="四季線上影視 Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.gagaoolala }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.gagaoolala }}" class="how-to-watch-link-item gagaoolala" title="前往 GagaOOLala 觀看"
+              target="_blank">
+              <img data-src="/src/images/ott/gagaoolala.svg" alt="GagaOOLala Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.giloo }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.giloo }}" class="how-to-watch-link-item giloo" title="前往 Giloo 觀看" target="_blank">
+              <img data-src="/src/images/ott/giloo.svg" alt="Giloo Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.vidol }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.vidol }}" class="how-to-watch-link-item vidol" title="前往 vidol 觀看" target="_blank">
+              <img data-src="/src/images/ott/vidol.svg" alt="vidol Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.yahootv }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.yahootv }}" class="how-to-watch-link-item yahootv" title="前往 Yahoo TV 觀看" target="_blank">
+              <img data-src="/src/images/ott/yahoo-tv.svg" alt="Yahoo TV Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.gp }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.gp }}" class="how-to-watch-link-item gp-plus" title="前往 GP+ 觀看" target="_blank">
+              <img data-src="/src/images/ott/gp-plus.svg" alt="GP+ Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.jointmovies }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.jointmovies }}" class="how-to-watch-link-item jointmovies" title="前往想映電影院觀看" target="_blank">
+              <img data-src="/src/images/ott/jointmovies.svg" alt="想映電影院 Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.kino }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.kino }}" class="how-to-watch-link-item kinostream" title="前往 KINOSTREAM 觀看" target="_blank">
+              <img data-src="/src/images/ott/kinostream.svg" alt="KINOSTREAM Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.iqiyi }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.iqiyi }}" class="how-to-watch-link-item iqiyi" title="前往愛奇藝國際站觀看" target="_blank">
+              <img data-src="/src/images/ott/iqiyi.svg" alt="愛奇藝 Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.wetv }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.wetv }}" class="how-to-watch-link-item wetv" title="前往 wetv 觀看" target="_blank">
+              <img data-src="/src/images/ott/wetv.svg" alt="wetv Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+            {{ if .Params.videoinfo_block.online_view_block.bilibili }}
+            <a href="{{ .Params.videoinfo_block.online_view_block.bilibili }}" class="how-to-watch-link-item bilibili" title="前往 bilibili 觀看" target="_blank">
+              <img data-src="/src/images/ott/bilibili.svg" alt="bilibili Logo" class="lazy" width="104" height="35">
+            </a>
+            {{ end }}
+      
+          </div>
+        <a href="mailto:service@email.yuslife.cc?subject=【錯誤回報】&amp;body=%e6%96%87%e7%ab%a0%e9%80%a3%e7%b5%90%ef%bc%9ahttps%3a%2f%2fyuslife.cc%2fdrama%2fgold-leaf%2f%0d%0a%e9%8c%af%e8%aa%a4%e8%b3%87%e8%a8%8a%ef%bc%9a%0d%0a%e6%ad%a3%e7%a2%ba%e8%b3%87%e8%a8%8a%ef%bc%9a"
+            class="how-to-watch-error">錯誤回報</a>
+    </div>
+    <div class="preview hide">
+        <button class="close" id="prv-close"></button>
+        <div class="embed-container">
+            <!-- <div id="player"></div> -->
+        </div>
+    </div>
+</div>

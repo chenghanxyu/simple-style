@@ -1,0 +1,574 @@
+article {
+    width: 95%;
+    max-width: 1080px;
+    margin: 0px auto;
+    padding: 30px 0;
+}
+
+
+h1.title {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.article-meta {
+    margin: 0px auto;
+    font-size: 0.9rem;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.article-meta img {
+    width: 16px;
+    height: 16px;
+    margin: 5px;
+}
+
+.article-meta p {
+    margin: 10px 10px 10px 0px;
+}
+
+article .content {
+    margin: 50px auto;
+}
+
+article .content img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: top;
+}
+
+article .content figure {
+    margin: 10px 0;
+    text-align: center;
+}
+
+article .content figure figcaption p {
+    font-size: 1rem;
+    margin: 5px auto;
+    opacity: 0.7;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+article .content p {
+    font-size: 1.3rem;
+    line-height: 2.5rem;
+    letter-spacing: 1.2px;
+    font-weight: 500;
+}
+
+article .content h2,
+article .content h3,
+article .content h4 {
+    width: 100%;
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+article .content h2::after,
+article .content h2::before,
+article .content h3::after,
+article .content h3::before,
+article .content h4::after,
+article .content h4::before {
+    content: "";
+    position: relative;
+    display: block;
+    height: 2rem;
+    width: 5px;
+    border-radius: 10px;
+    background: #ffa81c;
+    margin: 5px 20px;
+    transform: rotate(30deg);
+}
+
+article .content h2 {
+    font-size: 1.7rem;
+}
+
+article .content h3 {
+    font-size: 1.6rem;
+}
+
+article .content h4 {
+    font-size: 1.4rem;
+}
+
+article .content h5 {
+    font-size: 1.2rem;
+}
+
+article .content h6 {
+    font-size: 1rem;
+}
+
+article .content a {
+    color: #000;
+    border-bottom: 2px solid #ffa81c;
+}
+
+article .content blockquote {
+    margin: 0;
+    padding: 5px 10px;
+    border-left: 3px solid #ffa81c;
+    background: #fff;
+}
+
+.info {
+    width: calc(95% - 30px);
+    max-width: 800px;
+    background: #fff;
+    padding: 15px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.buy-me-a-coffee{
+    width: calc(95% - 30px);
+    max-width: 800px;
+    border: #ffa81c solid 2px;
+    background: transparent;
+    margin: 0 auto 40px;
+    position: relative;
+    padding: 35px 15px;
+}
+
+.buy-me-a-coffee .coffee{
+    min-width: 30%;
+    width: 80px;
+    height: auto;
+    max-height: 150px;
+}
+
+.buy-me-a-coffee .coffee-content{
+    padding: 10px;
+}
+
+.buy-me-a-coffee .coffee-content .buyacafe{
+    border: none;
+    background: #ffa81c;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-family: 'shippori-mincho-b1', 'source-han-serif-tc', 'NSimSun', 'LiSong Pro', serif;
+    font-weight: 700;
+    margin: 15px 0 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #262722;
+}
+
+.buy-me-a-coffee .coffee-content h3,.buy-me-a-coffee .coffee-content h4{
+    margin: 5px 0;
+    line-height: 1.5rem;
+}
+
+.buy-me-a-coffee .htdonate{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(10px) brightness(60%);
+    -webkit-backdrop-filter: blur(10px) brightness(60%);
+    transition: all 0.2s ease-in-out;
+}
+
+.buy-me-a-coffee .htdonate .donate-mobi{
+    display: none;
+}
+
+.buy-me-a-coffee .htdonate .donate-web{
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    color: #F6F5EF;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.buy-me-a-coffee .htdonate .donate-web img{
+    width: 150px;
+    height: 150px;
+}
+
+.buy-me-a-coffee .htdonate .donate-web p{
+    margin: 0;
+}
+
+button.jkpay{
+    background: center / contain no-repeat url(../image/donate-logo_jkpay.jpg);
+}
+
+button.ipass{
+    background: center / contain no-repeat url(../image/donate-logo_ipass.jpg);
+}
+
+button.ezpay{
+    background: center / contain no-repeat url(../image/donate-logo_ezpay.jpg);
+}
+
+.info .inner,.buy-me-a-coffee .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.info .poster {
+    min-width: 40%;
+}
+
+.info .poster img {
+    max-width: 100%;
+    height: 100%;
+    vertical-align: top;
+}
+
+.infos {
+    margin: 15px;
+}
+
+.infos .video-title-cht,
+.infos .video-title-org {
+    text-align: center;
+    margin: 5px 0;
+
+}
+
+.infos .video-title-cht {
+    color: #ff7403;
+}
+
+.infos .staffs {
+    display: inline-flex;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.infos .staffs .staffs-title {
+    min-width: 50px;
+}
+
+.infos .staffs p,
+.infos .staffs h5,
+.infos .staffs .score {
+    margin: 5px;
+}
+
+.infos .staffs h5 {
+    font-size: 1rem;
+    color: #ff7403;
+}
+
+.infos .staffs .score {
+    display: inline-flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 60%;
+}
+
+.infos .staffs .score .score-imdb {
+    display: inline-flex;
+    align-items: center;
+    width: 30%;
+    justify-content: space-around;
+    margin-right: 10px;
+}
+
+.infos .staffs .score .score-imdb p {
+    margin: 0;
+}
+
+.infos-btn {
+    text-align: center;
+    margin: 30px auto 15px;
+}
+
+.infos-btn button {
+    font-family: 'shippori-mincho-b1', 'source-han-serif-tc',  'NSimSun', 'LiSong Pro', serif;
+    font-weight: 700;
+    background: #ff7403;
+    border: none;
+    color: #F6F5EF;
+    padding: 5px 15px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.info .embed-container {
+    position: relative;
+    padding-bottom: 337.5px;
+    height: 0;
+    overflow: hidden;
+    width: 95%;
+    max-width: 600px;
+    top: 50%;
+    margin: 0 auto;
+    transform: translateY(-50%);
+}
+
+.info .embed-container iframe,
+.info .embed-container object,
+.info .embed-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    margin: 0;
+    border-radius: 15px;
+}
+
+.preview,
+.how-to-watch {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 600px;
+    backdrop-filter: blur(10px) brightness(60%);
+    -webkit-backdrop-filter: blur(10px) brightness(60%);
+}
+
+button.close {
+    position: absolute;
+    border: none;
+    background: transparent;
+    width: 16px;
+    height: 16px;
+    top: 16px;
+    right: 16px;
+    cursor: pointer;
+}
+
+button.close::after,
+button.close::before {
+    content: "";
+    position: absolute;
+    right: 0px;
+    width: 16px;
+    height: 2px;
+    border-radius: 10px;
+    background: #F6F5EF;
+}
+
+button.close::after {
+    transform: rotate(-45deg);
+}
+
+button.close::before {
+    transform: rotate(45deg);
+}
+
+
+.info .how-to-watch-link {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    overflow: hidden;
+    width: 95%;
+    max-width: 600px;
+    top: 50%;
+    margin: 0 auto;
+    transform: translateY(-50%);
+}
+
+.info .how-to-watch-link-item {
+    position: relative;
+    height: 65px;
+    width: calc(20% - 10px);
+    margin: 5px;
+    display: flex;
+    border-radius: 5px;
+    border-bottom: none;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    filter: brightness(.8)
+}
+
+.info .how-to-watch-link-item img {
+    margin: auto;
+    max-height: 80%;
+    max-width: 70%;
+    text-align: center
+}
+
+.info .how-to-watch-link-item.netflix,
+.info .how-to-watch-link-item.catchplay,
+.info .how-to-watch-link-item.myvideo,
+.info .how-to-watch-link-item.hami-video,
+.info .how-to-watch-link-item.mod,
+.info .how-to-watch-link-item.iqiyi,
+.info .how-to-watch-link-item.hbo,
+.info .how-to-watch-link-item.disney,
+.info .how-to-watch-link-item.wetv,
+.info .how-to-watch-link-item.friday,
+.info .how-to-watch-link-item.appletv,
+.info .how-to-watch-link-item.gp-plus,
+.info .how-to-watch-link-item.kinostream {
+    background-color: #404040
+}
+
+.info .how-to-watch-link-item.line-tv,
+.info .how-to-watch-link-item.pts,
+.info .how-to-watch-link-item.litv,
+.info .how-to-watch-link-item.youtube,
+.info .how-to-watch-link-item.elta,
+.info .how-to-watch-link-item.anigamer,
+.info .how-to-watch-link-item.yahootv,
+.info .how-to-watch-link-item.bilibili,
+.info .how-to-watch-link-item.jointmovies {
+    background-color: #fafafa
+}
+
+.info .how-to-watch-link-item.kktv {
+    background-color: #551127
+}
+
+.info .how-to-watch-link-item.fourgtv {
+    background-color: #dc3632
+}
+
+.info .how-to-watch-link-item.gagaoolala {
+    background: linear-gradient(to right, #4e65b1 0, #ad54ae 100%)
+}
+
+.info .how-to-watch-link-item.giloo {
+    background-color: #ea2b40
+}
+
+.info .how-to-watch-link-item.vidol {
+    background-color: #472fff
+}
+
+.info .how-to-watch-link-item:hover {
+    filter: brightness(1);
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, .2)
+}
+
+.info .how-to-watch .how-to-watch-error{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 0.8rem;
+}
+
+code.hljs {
+    position: relative;
+    /* border-radius: 5px; */
+    padding: 2.8em 1.5em 0.8em!important;
+}
+
+pre{
+    position: relative;
+}
+
+pre::after {
+    content: "　● ● ●";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: .2em 0;
+    background-color: #272727;
+    border-bottom: 1px solid #494949;
+    color: #fff;
+    /* border-radius: 5px 5px 0 0; */
+}
+
+.navigation{
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    margin: 20px auto 40px;
+}
+
+.navigation a{
+    max-width: 50%;
+}
+
+.navigation a.part{
+    text-align-last: left;
+    padding-right: 5px;
+}
+
+.navigation a.nart{
+    text-align-last: right;
+    padding-left: 5px;
+}
+
+@media (max-width: 767px) {
+
+    article .content h2,
+    article .content h3,
+    article .content h4 {
+        text-align: center;
+    }
+
+    .info .inner{
+        flex-direction: column;
+    }
+
+    .info .embed-container {
+        padding-bottom: 53.44%;
+        width: 95%;
+        top: 50%;
+    }
+
+    .preview,
+    .how-to-watch {
+        border-radius: 15px 15px 0 0;
+    }
+
+    .info .how-to-watch-link{
+        width: calc(95% - 30px);
+    }
+
+    .info .how-to-watch-link-item {
+        position: relative;
+        height: 65px;
+        width: calc(50% - 30px);
+    }
+
+    .buy-me-a-coffee{
+        padding: 5px 15px;
+    }
+
+    .buy-me-a-coffee .htdonate .donate-web{
+        display: none;
+    }
+
+    .buy-me-a-coffee .htdonate .donate-mobi{
+        width: 100%;
+        height: 100%;
+        display: inline-flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    
+    .buy-me-a-coffee .htdonate .donate-mobi button{
+        width: 60px;
+        height: 60px;
+        border: none;
+        border-radius: 10px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+}

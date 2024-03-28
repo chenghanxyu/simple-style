@@ -1,14 +1,89 @@
-{{ define "main" -}}
-<div>
-  <h1>{{ .Title }}</h1>
-</div>
-<ul class="article-list">
-  {{ range .Paginator.Pages -}}
-  <li class="article-item">
-    <div class="article-date">{{ .Date.Format (.Site.Params.dateFormat | default "2006-01-02 15:04") }}</div>
-    <div class="article-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></div>
-  </li>
-  {{ end -}}
-</ul>
-{{ template "_internal/pagination.html" . -}}
-{{ end -}}
+{{ define "main" }}
+  <article>
+    {{ if .Data.Singular }}
+      <h1 class="title">我的觀點 ✎ {{ .Title }}</h1>
+    {{ end }}
+
+    <div class="article-list">
+      {{ range .Paginator.Pages }}
+      <div class="article-item">
+        <div class="article-item-img">
+          <a href="{{ .Permalink }}">
+            {{ if .Params.featuredImage }}
+            {{ $featured := resources.Get .Params.featuredImage }}
+            <img src="{{ $featured.RelPermalink }}" alt="{{ .Title }}">
+            {{ else }}
+            <img src="/image/img-placeholder.svg" alt="{{ .Title }}">
+            {{ end }}
+          </a>
+        </div>
+        <div class="article-item-text">
+          <a href="{{ .Permalink }}">
+            <h2 class="article-title">{{ .Title }}</h2>
+            <div class="article-meta">
+              
+              <img src="/image/calendar.svg" alt="calendar">
+              
+              <p>{{ .Date.Format (default "2006-01-02" .Site.Params.dateFormat) }}</p>
+              {{ if .Params.categories}}
+              <img src="/image/category.svg" alt="category">
+              <p>{{ .Params.categories }}</p>
+              {{ end }}
+              
+          </div>
+          <p class="article-info">
+            {{ .Summary }}
+          </p>
+          </a>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+
+    {{if eq .Section "all" }}
+
+    <h1 class="title">我的觀點 ✎ {{ .Title }}</h1>
+    
+    <div class="article-list">
+      {{ $featuredPosts := where .Site.RegularPages "Draft" false }}
+      {{ range $featuredPosts}}
+      <div class="article-item">
+        <div class="article-item-img">
+          <a href="{{ .Permalink }}">
+            {{ if .Params.featuredImage }}
+            {{ $featured := resources.Get .Params.featuredImage }}
+            <img src="{{ $featured.RelPermalink }}" alt="{{ .Title }}">
+            {{ else }}
+            <img src="/image/img-placeholder.svg" alt="{{ .Title }}">
+            {{ end }}
+          </a>
+        </div>
+        <div class="article-item-text">
+          <a href="{{ .Permalink }}">
+            <h2 class="article-title">{{ .Title }}</h2>
+            <div class="article-meta">
+              
+              <img src="/image/calendar.svg" alt="calendar">
+              
+              <p>{{ .Date.Format (default "2006-01-02" .Site.Params.dateFormat) }}</p>
+              {{ if .Params.categories}}
+              <img src="/image/category.svg" alt="category">
+              <p>{{ .Params.categories }}</p>
+              {{ end }}
+              
+          </div>
+          <p class="article-info">
+            {{ .Summary }}
+          </p>
+          </a>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+
+    {{ end }}
+
+    {{ partial "pagination.html" . }}
+
+  </article>
+{{ end }}

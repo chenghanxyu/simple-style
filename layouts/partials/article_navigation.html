@@ -1,0 +1,12 @@
+{{ $prev := .Prev }}
+{{ $next := .Next }}
+
+<div class="navigation">
+    {{ if $prev }}
+    <a class="part" href="{{ $prev.Permalink }}" title="{{ $prev.Title }}">← {{ $prev.Title | truncate 15 "..."  }}</a>
+    {{ end }}
+
+    {{ if $next }}
+    <a class="nart" href="{{ $next.Permalink }}" title="{{ $next.Title }}">{{ $next.Title | truncate 15 "..."  }} →</a>
+    {{ end }}
+</div>

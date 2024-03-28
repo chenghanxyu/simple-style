@@ -1,12 +1,41 @@
-<footer>
-  <p>
-{{- if .Site.Copyright -}}
-  {{ .Site.Copyright | markdownify }}
-{{- else -}}
-  &copy; 2019 Linlin Yan. <a href="https://creativecommons.org/licenses/by/4.0/deed.zh">CC-BY-4.0</a>
-{{- end -}}
-  </p>
-{{- if .Site.Params.ShowThemeInfo -}}
-  <p>Powered by <a href="https://gohugo.io/">Hugo</a> with <a href="https://github.com/yanlinlin82/simple-style">Simple-Style</a></p>
-{{- end -}}
-</footer>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+{{ $lazy := resources.Get "script/lazyload.js" | minify | fingerprint }}
+<script type="text/javascript" src="{{ $lazy.RelPermalink }}"></script>
+
+{{ $common := resources.Get "script/common.js" | minify | fingerprint }}
+<script type="text/javascript" src="{{ $common.RelPermalink }}"></script>
+
+{{ if .IsHome}}
+
+<script>
+  setTimeout("$('#eapps-instagram-feed-1 > a').remove()",2000)
+</script>
+
+{{ end }}
+
+{{ if .IsPage }}
+
+{{ if .Params.videoinfo_block.preview }}
+<script src="https://www.youtube.com/iframe_api"></script>
+{{ end }}
+
+{{ $page := resources.Get "script/page.js" | minify | fingerprint }}
+<script type="text/javascript" src="{{ $page.RelPermalink }}"></script>
+
+{{ end }}
+
+<script>
+  lazyLoadInstance.update();
+</script>
+
+{{ if eq .Section "coding" }}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js" integrity="sha512-bgHRAiTjGrzHzLyKOnpFvaEpGzJet3z4tZnXGjpsCcqOnAH6VGUx9frc5bcIhKTVLEiCO6vEhNAgx5jtLUYrfA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+  setTimeout('hljs.highlightAll();',3000)
+</script>
+
+{{ end }}

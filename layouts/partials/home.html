@@ -1,0 +1,71 @@
+<div class="myquote">
+    <div class="inner">
+        <p>在生活中總有許多<br>令人開心或令人沮喪的事發生<br>但無論是哪一種<br>都值得我們好好的筆記下來</p>
+        <p class="from">—於是寫下生活筆記—</p>
+    </div>
+    <p class="scroll-down-ani"></p>
+</div>
+
+<div class="featured section">
+    <h2 class="sub-title">我的觀點</h2>
+    <div class="inner">
+        {{ $featuredPosts := where .Site.RegularPages "Type" "featured" }}
+        {{ range $featuredPosts | first 3 }}
+        <div class="featured-article">
+            <a href="{{ .Permalink }}">
+                {{ if .Params.featuredimage}}
+                {{ $featured := resources.Get .Params.featuredImage }}
+                <div class="article-img" style="background-image: url({{ $featured.RelPermalink }});">
+                </div>
+                {{ else }}
+                <div class="article-img" style="background-image: url('/image/img-placeholder.svg');">
+                </div>
+                {{ end }}
+                <h3 class="article-title">{{ .LinkTitle }}</h3>
+            </a>
+        </div>
+        {{ end }}
+    </div>
+    <p class="more"><a href="/all">MORE ⇀</a></p>
+</div>
+
+<div class="photography section">
+    <h2 class="sub-title">攝影輯</h2>
+    <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+<div class="elfsight-app-539d1a78-a007-4615-ad9a-ebbfc5125852" data-elfsight-app-lazy></div>
+</div>
+
+<div class="section sticker">
+    <h2 class="sub-title">貼圖</h2>
+    <div class="inner">
+        <div class="sticker-item">
+            <a href="https://store.line.me/stickershop/product/24635458/zh-Hant" target="_blank">
+                <div class="sticker-img"
+                    style="background-image: url(https://stickershop.line-scdn.net/stickershop/v1/product/24635458/LINEStorePC/main.png?v=1);">
+                </div>
+            </a>
+        </div>
+        <div class="sticker-item">
+            <a href="https://store.line.me/stickershop/product/19049537/zh-Hant" target="_blank">
+                <div class="sticker-img"
+                    style="background-image: url(https://stickershop.line-scdn.net/stickershop/v1/product/19049537/LINEStorePC/main.png?v=1);">
+                </div>
+            </a>
+        </div>
+        <div class="sticker-item">
+            <a href="https://store.line.me/emojishop/product/6419107174d1fb7ec3629c3a/zh-Hant" target="_blank">
+                <div class="sticker-img"
+                    style="background-image: url(https://stickershop.line-scdn.net/sticonshop/v1/product/6419107174d1fb7ec3629c3a/iPhone/main.png?v=1);">
+                </div>
+            </a>
+        </div>
+        <div class="sticker-item">
+            <a href="https://store.line.me/stickershop/product/3083779/zh-Hant" target="_blank">
+                <div class="sticker-img"
+                    style="background-image: url(https://stickershop.line-scdn.net/stickershop/v1/product/3083779/LINEStorePC/main.png?v=1);">
+                </div>
+            </a>
+        </div>
+    </div>
+    <p class="more"><a href="https://store.line.me/stickershop/author/367218/zh-Hant" target="_blank">MORE ⇀</a></p>
+</div>

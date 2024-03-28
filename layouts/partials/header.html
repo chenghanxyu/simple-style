@@ -1,19 +1,59 @@
-<header>
-{{ with .Site.Menus.parent -}}
-  <nav>
-  {{ range . -}}
-    <a href="{{ .URL }}">{{ .Name }}</a>
-  {{ end -}}
-  </nav>
-{{ end -}}
-  <div>
-    <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
-    {{- if .Site.Params.subtitle }}<h2><a href="{{ .Site.BaseURL }}">{{ .Site.Params.subtitle }}</a></h2>{{- end }}
+<header id="header">
+  <div class="header-inner">
+      <a href="/">
+          <div class="logo">
+          </div>
+          <div class="logo-w expand">
+          </div>
+      </a>
+      <div class="btn-wrapper">
+          <div class="menu-btn">
+              <label for="menuBtn">
+                  <input type="checkbox" id="menuBtn" />
+                  <span></span>
+                  <span></span>
+                  <span></span>
+              </label>
+          </div>
+      </div>
   </div>
-  <nav>
-    {{- range .Site.Menus.main -}}
-    <a href="{{ .URL }}">{{ .Name }}</a>
-    {{- end -}}
-    {{ partial "search.html" . }}
-  </nav>
+
 </header>
+<div class="gradient-header-gb"></div>
+<div class="menu-wrapper">
+  <div class="inner">
+      <ul class="menu" style="display: block;">
+          <li>
+              <a href="/about-us" target="_self">關於我</a>
+          </li>
+          <li>
+              <a href="/donate" target="_self">贊助我</a>
+          </li>
+          <li>
+              <a href="/categories/%E7%94%9F%E6%B4%BB%E6%99%82%E4%BA%8B/" target="_self">生活時事</a>
+          </li>
+          <li>
+              <a href="/categories/%E9%9B%BB%E5%BD%B1%E8%A9%95%E8%AB%96/" target="_self">電影評論</a>
+          </li>
+          <li>
+              <a href="/categories/%E9%9B%BB%E8%A6%96%E5%8A%87%E9%9B%86/" target="_self">電視劇集</a>
+          </li>
+          <li>
+              <a href="/categories/%E4%BA%BA%E7%89%A9%E7%AD%86%E8%A8%98/" target="_self">人物筆記</a>
+          </li>
+          <li>
+              <a href="/categories/%E7%A8%8B%E5%BC%8F%E7%AD%86%E8%A8%98/" target="_self">程式筆記</a>
+          </li>
+      </ul>
+      <footer>
+          <div class="socials">
+              <a href="https://facebook.com/yuslife/" class="fb social-icon" target="_blank"></a>
+              <a href="https://www.instagram.com/yuslife.cc/" class="ig social-icon" target="_blank"></a>
+          </div>
+          <div class="copyright">© 2024. All Rights Reserved</div>
+      </footer>
+  </div>
+
+
+
+</div>

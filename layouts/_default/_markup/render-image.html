@@ -1,0 +1,19 @@
+{{ $post := resources.Get .Destination }}
+<figure>
+    <picture>
+        {{ $resized400 := $post.Resize "400x webp" }}
+        <source data-srcset="{{ $resized400.RelPermalink }}" media="(max-width:500px)" type="image/webp">
+        {{ $resized600 := $post.Resize "600x webp" }}
+        <source data-srcset="{{ $resized600.RelPermalink }}" media="(max-width:700px)" type="image/webp">
+        {{ $resized960 := $post.Resize "960x webp" }}
+        <source data-srcset="{{ $resized960.RelPermalink }}" type="image/webp">
+        {{ $resized := $post.Resize "960x" }}
+        <img src="/src/images/img-placeholder.svg" data-src="{{ $resized.RelPermalink }}" alt="{{ .Text }}"
+            class="lazy" {{ with .Title}} title="{{ . }}" {{ end }} width="960" height="540">
+    </picture>
+    {{ with .Title}}
+    <figcaption>
+        <p>{{ . }}</p>
+    </figcaption>
+    {{ end }}
+</figure>
